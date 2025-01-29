@@ -81,30 +81,8 @@ const cron = require('node-cron')
 
 
 
-// // Cron job to ping the website every 10 minutes
-// cron.schedule('*/10 * * * *', async () => {
-//     try {
-//         // Send a GET request to the website
-//         await axios.get('https://asset-mogul-back.onrender.com');
-//         console.log('Pinged website to keep it awake');
-        
-//         // Optional: Send a wake-up email if needed
-//         // const subject = "Wake up website";
-//         // const html = wakeUpMail(); // Assuming wakeUpMail() generates your email template
-//         // const regEmailData = {
-//         //     email: process.env.WAKE_UP_EMAIL, // Use the environment variable
-//         //     subject,
-//         //     html
-//         // };
-//         // await sendEmail(regEmailData);
-//     } catch (error) {
-//         console.error('Error in cron job:', error.message);
-//     }
-// });
-
-
-// Cron job to ping the website every 30 minutes
-cron.schedule('*/30 * * * *', async () => {
+// Cron job to ping the website every 10 minutes
+cron.schedule('*/10 * * * *', async () => {
     try {
         // Send a GET request to the website
         await axios.get('https://asset-mogul-back.onrender.com');
@@ -123,6 +101,28 @@ cron.schedule('*/30 * * * *', async () => {
         console.error('Error in cron job:', error.message);
     }
 });
+
+
+// // Cron job to ping the website every 30 minutes
+// cron.schedule('*/30 * * * *', async () => {
+//     try {
+//         // Send a GET request to the website
+//         await axios.get('https://asset-mogul-back.onrender.com');
+//         console.log('Pinged website to keep it awake');
+        
+//         // Optional: Send a wake-up email if needed
+//         // const subject = "Wake up website";
+//         // const html = wakeUpMail(); // Assuming wakeUpMail() generates your email template
+//         // const regEmailData = {
+//         //     email: process.env.WAKE_UP_EMAIL, // Use the environment variable
+//         //     subject,
+//         //     html
+//         // };
+//         // await sendEmail(regEmailData);
+//     } catch (error) {
+//         console.error('Error in cron job:', error.message);
+//     }
+// });
 
 
 
