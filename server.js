@@ -79,14 +79,12 @@ const cron = require('node-cron')
 //     }
 // });
 
-
-
 // Cron job to ping the website every 10 minutes
-cron.schedule('*/10 * * * *', async () => {
+cron.schedule('*/15 * * * *', async () => {
     try {
         // Send a GET request to the website
-        await axios.get('https://asset-mogul-back.onrender.com');
-        console.log('Pinged website to keep it awake');
+        const response = await axios.get('https://assets-mogul-backend.onrender.com');
+        console.log('Pinged website to keep it awake. Status:', response.status);
         
         // Optional: Send a wake-up email if needed
         // const subject = "Wake up website";
@@ -99,9 +97,12 @@ cron.schedule('*/10 * * * *', async () => {
         // await sendEmail(regEmailData);
     } catch (error) {
         console.error('Error in cron job:', error.message);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+        }
     }
 });
-
 
 // // Cron job to ping the website every 30 minutes
 // cron.schedule('*/30 * * * *', async () => {
