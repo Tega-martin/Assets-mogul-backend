@@ -444,6 +444,8 @@ const assignMoneyToUser = async (req, res) => {
 
         const { identifier, amount } = req.body;
 
+        const cleanedAmount = amount?.toString().trim().toLowerCase();
+
         let user;
         if (identifier && mongoose.isValidObjectId(identifier)) {
             console.log('Identifier is a valid ObjectId');
@@ -461,6 +463,19 @@ const assignMoneyToUser = async (req, res) => {
             console.log('User not found');
             return res.status(400).json({ message: 'User not found' });
         }
+        
+        // If the amount is "null", reset depositWallet and accountBalance
+        if (cleanedAmount === 'empty') {
+            user.depositWallet = 0;
+            user.accountBalance = 0;
+            user.PendingDeposit = 0; 
+            user.intrestWallet = 0;
+            user.referalWallet = 0;
+            await user.save();
+
+            return res.status(200).json({ message: 'User account reset successfully', user });
+        }
+
 
         console.log('User found:', user);
 
