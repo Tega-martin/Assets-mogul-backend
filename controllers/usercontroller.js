@@ -468,7 +468,7 @@ const assignMoneyToUser = async (req, res) => {
         if (cleanedAmount === 'empty') {
             user.depositWallet = 0;
             user.accountBalance = 0;
-            user.PendingDeposit = 0; 
+            user.pendingDeposit = 0; 
             user.intrestWallet = 0;
             user.referalWallet = 0;
             await user.save();
