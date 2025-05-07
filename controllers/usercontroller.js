@@ -120,7 +120,6 @@ const signUpUser = async (req, res) => {
             });
         }
 
-
     
 
         const salt = await bcrypt.genSaltSync(10);
