@@ -3,7 +3,7 @@ const otpModel = require('../models/otpModel')
 const otpgenerator = require('otp-generator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const sendEmail = require('../middlewares/mail')
+const sendEmail = require('../middlewares/updatedMail')
 const {loginNotificationMail,otpVerifyMail} = require('../utils/mailTemplates')
 const transationModel = require('../models/investmentModel')
 const depositModel = require('../models/depositModel')
@@ -89,19 +89,6 @@ const signUpUser = async (req, res) => {
         });
 
         const savedOtp = await userOtp.save();
-
-        // const picture = await new Promise((resolve, reject) => {
-        //     cloudinary.uploader.upload(req.files.profilePicture.tempFilePath, {
-        //         allowed_formats: ['txt', 'doc', 'pdf', 'docx', 'png', 'jpeg'], // Allow these file formats
-        //         max_file_size: 2000000 // Maximum file size in bytes (2MB)
-        //     }, (error, result) => {
-        //         if (error) {
-        //             reject(error);
-        //         } else {
-        //             resolve(result);
-        //         }
-        //     });
-        // });
         const createFolderResult = await cloudinary.api.create_folder('asset_Mogul');
         let picture = {}; // Empty object for profile picture
         if (req.files && req.files.profilePicture) {
@@ -253,13 +240,6 @@ const verifyOtp = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
-
-
-
-
-// Define a utility function to check if the user is within the cooldown period
-
 
 
 

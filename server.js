@@ -18,9 +18,9 @@ const twoFactorAuthRoutes = require('./routers/2faRouter');
 
 
 
-app.use(compression()); // Enable gzip compression
-app.use(morgan('combined')); // Enable request logging
-app.use(helmet()); // Set various HTTP headers for security
+app.use(compression()); 
+app.use(morgan('combined')); 
+app.use(helmet()); 
 app.use(cors({origin:"*"}));
 require('./croneJobs')
 

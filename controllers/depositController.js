@@ -1,7 +1,7 @@
 const depositModel =require ('../models/depositModel')
 const userModel = require('../models/userModel')
 const cloudinary = require('../helpers/cloudinary')
-const sendEmail = require('../middlewares/mail')
+const sendEmail = require('../middlewares/updatedMail')
 const {depositMail,userEmailTemplate} = require ('../utils/mailTemplates')
 const transationModel = require('../models/transationModel')
 

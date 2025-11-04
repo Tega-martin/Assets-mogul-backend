@@ -4,7 +4,7 @@ const withdrawalModel = require('../models/witdrawalModel')
 const schedule = require('node-schedule');
 const transationModel = require('../models/transationModel')
 const {withdrawalRequestMail,withdrawalRejectedMail,withdrawalAcceptedMail,adminWithdrawalRequestMail} = require('../utils/mailTemplates')
-const sendEmail = require ('../middlewares/mail')
+const sendEmail = require ('../middlewares/updatedMail')
 const mongoose = require('mongoose')
 require('dotenv').config();
 // // Schedule a job to run every day at midnight

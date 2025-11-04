@@ -2,7 +2,7 @@ const userModel  = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const {forgetMail} = require('../utils/mailTemplates')
-const sendEmail = require('../middlewares/mail')
+const sendEmail = require('../middlewares/updatedMail')
 
 const resetPassword = async (req, res) => {
   try {

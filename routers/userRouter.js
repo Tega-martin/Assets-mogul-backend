@@ -8,7 +8,7 @@ const {welcome,signUpUser,verifyOtp,resendVerificationOtp,login,ViewProfile,
 const {resetPassword,changePassword,forgotPassword} = require ('../controllers/passwordController')
 const {authenticateUser,Role} = require('../middlewares/authorisation')
 const {getTransactionHistory,getLatestTransaction} = require('../controllers/transation')
-const checkResendCooldown = require('../controllers/verifyOptions')
+
 
 
 
