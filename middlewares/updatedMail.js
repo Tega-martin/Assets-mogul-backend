@@ -6,7 +6,7 @@ const sendEmail = async (options) => {
     const apiKey = process.env.BREVO_API_KEY;
     
     if (!apiKey) {
-      res('Brevo API key is missing. Check your .env file.');
+      throw new Error('Brevo API key is missing. Check your .env file.');
     }
 
 
@@ -34,6 +34,7 @@ const sendEmail = async (options) => {
         },
       }
     );
+    
 
     console.log('✅ Email sent via Brevo:', response.data.messageId || response.data);
     return response.data;
@@ -44,3 +45,4 @@ const sendEmail = async (options) => {
 };
 
 module.exports = sendEmail;
+
