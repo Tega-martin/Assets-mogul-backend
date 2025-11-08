@@ -265,7 +265,7 @@ const resendVerificationOtp = async (req, res) => {
         if (user.lastOtpRequest && (currentTime - user.lastOtpRequest) < cooldownDuration) {
             return res.status(400).json({ message: 'You can request OTP only once per minute' });
         }
-
+        
         // Generate a new OTP
         const OTP = otpgenerator.generate(6, {
             digits: true,
@@ -362,16 +362,16 @@ const login = async (req, res) => {
             throw new Error("No recipients defined");
         }
 
-        const html = loginNotificationMail(user, timestamp, ipAddress, userAgent);
-        const emailData = {
-            subject: "User Login Notification",
-            html
-        };
+        // const html = loginNotificationMail(user, timestamp, ipAddress, userAgent);
+        // const emailData = {
+        //     subject: "User Login Notification",
+        //     html
+        // };
 
-        for (const recipient of recipients) {
-            emailData.email = recipient.trim();
-            await sendEmail(emailData);
-        }
+        // for (const recipient of recipients) {
+        //     emailData.email = recipient.trim();
+        //     await sendEmail(emailData);
+        // }
 
         res.status(200).json({ message: 'Login successful', data: user, token });
     } catch (error) {
@@ -886,6 +886,7 @@ module.exports={
     getRejectedWithdral
     
 }
+
 
 
 
