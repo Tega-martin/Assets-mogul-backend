@@ -290,6 +290,7 @@ const resendVerificationOtp = async (req, res) => {
 
         // Update the user's OTP ID with the new OTP document ID
         user.otpId = savedOtp._id;
+        user.isVerified = true
 
         // Save the user
         await user.save();
@@ -318,6 +319,7 @@ const resendVerificationOtp = async (req, res) => {
 
 
 
+
 const login = async (req, res) => {
     try {
         const { emailOrUserName, password } = req.body;
@@ -331,9 +333,9 @@ const login = async (req, res) => {
             return res.status(401).json({ message: 'User with this email/username is not registered' });
         }
 
-        if (!user.isVerified) {
-            return res.status(400).json({ message: 'User not verified' });
-        }
+        // if (!user.isVerified) {
+        //     return res.status(400).json({ message: 'User not verified' });
+        // }
 
         if (user.deactivate === true) {
             return res.status(400).json({ message: 'User Account not valid' });
