@@ -492,7 +492,7 @@ const assignMoneyToUser = async (req, res) => {
         };
 
         console.log('Sending email to:', user.email);
-        await sendEmail({ email: user.email, ...emailData });
+        //await sendEmail({ email: user.email, ...emailData });
         console.log('Email sent successfully');
 
         res.status(200).json({ message: 'Money assigned to user successfully', user });
