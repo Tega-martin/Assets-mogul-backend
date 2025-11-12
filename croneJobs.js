@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const PING_URL = 'https://assets-mogul-backend.onrender.com';
 
-//Cron job to ping the website every 10 minutes
+
 cron.schedule('*/25 * * * *', async () => {
     console.log(`[${new Date().toISOString()}] Running cron job to keep website awake...`);
 
@@ -20,6 +20,6 @@ cron.schedule('*/25 * * * *', async () => {
     }
 });
 
-// Export the cron job so we can require it in `server.js`
+
 module.exports = cron;
 

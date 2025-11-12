@@ -139,13 +139,13 @@ const signUpUser = async (req, res) => {
             process.env.SECRET_KEY, { expiresIn: "30mins" });
 
         
-        const html = otpVerifyMail(OTP);     
-        const regEmmailData = {
-            email: user.email,
-            subject: "User Registration",
-            html
-        };
-       await sendEmail(regEmmailData);
+        // const html = otpVerifyMail(OTP);     
+        // const regEmmailData = {
+        //     email: user.email,
+        //     subject: "User Registration",
+        //     html
+        // };
+      // await sendEmail(regEmmailData);
 
         // // for (const recipient of recipients) {
         // //     const regEmmailData = {
@@ -176,7 +176,7 @@ const hashOTP = async (otp) => {
 async function generateReferralLink(username) {
     try {
         // Your base URL
-        const baseUrl = 'https://www.assetMogulplus.com/register';
+        const baseUrl = 'https://www.assetsmogulplus.com/registration';
 
         // Construct the referral link with username as parameter
         const referralLink = `${baseUrl}?reference=${encodeURIComponent(username)}`;
