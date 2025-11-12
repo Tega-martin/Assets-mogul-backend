@@ -40,9 +40,10 @@ const signUpUser = async (req, res) => {
 
         if (!password || password.trim().length === 0) {
             throw new Error("Password field cannot be empty");
-        } else if (!passwordPattern.test(password)) {
-            throw new Error("Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number");
         }
+        //  else if (!passwordPattern.test(password)) {
+        //     throw new Error("Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number");
+        // }
     
 
         if (!email || !emailPattern.test(email)) {
