@@ -156,7 +156,7 @@ const signUpUser = async (req, res) => {
         // }
        
 
-        res.status(200).json({ message: 'Signup successful, please check your email for OTP verification', data: user, token });
+        res.status(200).json({ message: 'Signup successful.....', data: user, token });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
