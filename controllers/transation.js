@@ -44,6 +44,7 @@ const deleteOldTransactions = async () => {
 };
 
 
+
 const deleteAllTransactions = async () => {
     try {
         // Delete all transactions

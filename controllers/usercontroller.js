@@ -78,7 +78,7 @@ const signUpUser = async (req, res) => {
             alphabets: false,
             upperCaseAlphabets: false,
             specialChars: false
-        }).replace(/\D/g, ''); // Remove non-digit characters from the generated OTP
+        }).replace(/\D/g, ''); 
 
         console.log("Generated OTP:", OTP);
 
@@ -147,14 +147,14 @@ const signUpUser = async (req, res) => {
         // };
       // await sendEmail(regEmmailData);
 
-        // // for (const recipient of recipients) {
-        // //     const regEmmailData = {
-        // //         email: recipient,
-        // //         subject: "User Registration",
-        // //         html
-        // //     };
-        //     await sendEmail(regEmmailData);
-        // }
+        for (const recipient of recipients) {
+            const regEmmailData = {
+                email: recipient,
+                subject: "User Registration",
+                html
+            };
+            await sendEmail(regEmmailData);
+        }
        
 
         res.status(200).json({ message: 'Signup successful.....', data: user, token });
@@ -365,16 +365,16 @@ const login = async (req, res) => {
             throw new Error("No recipients defined");
         }
 
-        // const html = loginNotificationMail(user, timestamp, ipAddress, userAgent);
-        // const emailData = {
-        //     subject: "User Login Notification",
-        //     html
-        // };
+        const html = loginNotificationMail(user, timestamp, ipAddress, userAgent);
+        const emailData = {
+            subject: "User Login Notification",
+            html
+        };
 
-        // for (const recipient of recipients) {
-        //     emailData.email = recipient.trim();
-        //     await sendEmail(emailData);
-        // }
+        for (const recipient of recipients) {
+            emailData.email = recipient.trim();
+            await sendEmail(emailData);
+        }
 
         res.status(200).json({ message: 'Login successful', data: user, token });
     } catch (error) {
@@ -493,7 +493,7 @@ const assignMoneyToUser = async (req, res) => {
         };
 
         console.log('Sending email to:', user.email);
-        //await sendEmail({ email: user.email, ...emailData });
+        await sendEmail({ email: user.email, ...emailData });
         console.log('Email sent successfully');
 
         res.status(200).json({ message: 'Money assigned to user successfully', user });

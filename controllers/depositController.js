@@ -84,14 +84,14 @@ const deposit = async (req, res) => {
       
         
    // sending an email to the user that the upload has been confirmed
-       // await sendEmail(data);
+       await sendEmail(data);
             htmlBody=userEmailTemplate(depositRecord)
         const data2 = {
             email:user.email,
             subject:  "deposit funds uploaded",
             html:htmlBody
         };
-        //await sendEmail(data2);
+        await sendEmail(data2);
         await depositRecord.save();
 
         res.status(200).json({ message: 'Deposit successful', data: depositRecord,depositTransaction });
